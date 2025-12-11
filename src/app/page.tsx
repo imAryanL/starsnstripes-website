@@ -14,24 +14,19 @@ export default function Home() {
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+            What is a Cloud Agent?
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+            A <span className="font-semibold text-zinc-950 dark:text-zinc-50">cloud agent</span> is a software component that runs in cloud environments to perform automated tasks, monitoring, and management operations. Cloud agents act as intermediaries between cloud infrastructure and management systems, enabling:
+          </p>
+          <ul className="max-w-md text-base leading-7 text-zinc-600 dark:text-zinc-400 list-disc list-inside space-y-2">
+            <li><span className="font-medium text-zinc-950 dark:text-zinc-50">Monitoring</span> - Collecting metrics and performance data from cloud resources</li>
+            <li><span className="font-medium text-zinc-950 dark:text-zinc-50">Automation</span> - Executing tasks and workflows without manual intervention</li>
+            <li><span className="font-medium text-zinc-950 dark:text-zinc-50">Security</span> - Enforcing policies and detecting threats in real-time</li>
+            <li><span className="font-medium text-zinc-950 dark:text-zinc-50">Orchestration</span> - Coordinating services across distributed cloud systems</li>
+          </ul>
+          <p className="max-w-md text-base leading-7 text-zinc-600 dark:text-zinc-400">
+            Cloud agents are essential for modern DevOps practices, enabling scalable infrastructure management and continuous deployment pipelines.
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
