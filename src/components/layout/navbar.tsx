@@ -22,17 +22,17 @@ export default function Navbar() {
 
     return (
         <header className="w-full bg-white border-b sticky top-0 z-50">
-            <div className="container mx-auto px-3 h-25 flex items-center justify-between">
+            <div className="container mx-auto px-8 md:px-8 lg:px-12 xl:px-35 h-28 flex items-center justify-between">
                 {/*Logo of company*/}
                 <Link href="/" className="flex items-center gap-2">
                     <Image
                       src="/updatedlogo.png"
                       alt="Stars & Stripes Insurance Logo"
-                      width={150}
+                      width={160}
                       height={100}
                     />
                 </Link>
-
+ 
           
 
                     {/* Navigation Links */}
@@ -77,9 +77,13 @@ export default function Navbar() {
 
 
                     {/* Call to Action button which is "Get a Quote" */}
-                    <Button asChild className="hidden md:block bg-blue-900 hover:bg-blue-700 text-white font-bold active:scale-90 transition-all duration-100">
-                        <Link href="/quote">Get a Quote</Link>
-                    </Button>
+                    <a 
+                      href="/quote" 
+                      className="hidden md:block bg-blue-900 hover:bg-blue-700 active:bg-blue-600 text-white font-medium px-6 py-3 rounded-md active:scale-95 transition-all duration-100"
+                    >
+                      Get a Quote
+                    </a>
+
             </div>
 
 

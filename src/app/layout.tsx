@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 // Metadata defines hidden information for search engines and browsers like tab title, page description and link preview images
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar"
-import { Inter } from "next/font/google";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 
-
-
-// Font files Geist is default Next.js font
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Font files - Poppins for bold, modern design
+const poppins = Poppins({
+  weight: ["400", "600", "700", "800"],
   subsets: ["latin"],
+  variable: "--font-poppins",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Inter font style
-const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
@@ -36,9 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${poppins.variable} font-sans antialiased`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
