@@ -88,7 +88,7 @@ export default function Footer(){
                             <span className="font-semibold text-white">Fax:</span> 954-802-7561
                         </p>
                         <p>
-                            <span className="font-semibold text-white">Email:</span> alakhani0101@gmail.com
+                            <span className="font-semibold text-white">Email:</span> amir@starnstripesins.com
                         </p>
                         <p>
                             <span className="font-semibold text-white">Hours:</span> Mon-Fri 9AM-4PM
