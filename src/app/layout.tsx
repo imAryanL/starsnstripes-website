@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Navbar />
-        {/* ALl pages will be in 'children' don't label any pages content  */}
+        {/* All pages will be in 'children' don't label any pages content  */}
         {children}
         <Footer />
       </body>
