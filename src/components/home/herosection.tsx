@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { ShieldUser, Handshake, Star, BriefcaseBusiness} from 'lucide-react'
 
 export default function HeroSection() {
     return (
@@ -46,23 +47,30 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right Side - Trust Badges */}
-                    <div className="lg:flex flex-col gap-8 bg-white/10 backdrop-blur-sm rounded-xl py-8 max-w-md lg:mx-0">
-                        <div className="text-center">
-                            <p className="text-3xl md:text-4xl lg:text-5xl font-bold">20+</p>
-                            <p className="text-blue-100">Years Experience</p>
+                    <div className="lg:flex flex-col gap-8 bg-white/10 backdrop-blur-sm rounded-xl py-8 px-6 max-w-md lg:mx-0">
+                        <div className="flex items-start justify-center gap-4">
+                            <BriefcaseBusiness className="w-10 h-10 flex-shrink-0"/>
+                            <div>
+                                <p className="text-3xl lg:text-4xl font-bold">20+</p>
+                                <p className="text-blue-100 text-sm lg:text-lg">Years Experience</p>
+                            </div>
                         </div>
-                        <div className="text-center">
-                            <p className="text-3xl md:text-4xl lg:text-5xl font-bold">500+</p>
-                            <p className="text-blue-100">Clients Protected</p>
+                        <div className="flex items-start justify-center gap-4">
+                            <ShieldUser className="w-10 h-10 flex-shrink-0"/>
+                            <div>
+                                <p className="text-3xl lg:text-4xl font-bold">500+</p>
+                                <p className="text-blue-100 text-sm lg:text-lg">Clients Protected</p>
+                            </div>
                         </div>
-                        <div className="text-center">
-                            <p className="text-3xl md:text-4xl lg:text-5xl font-bold">5-Star</p>
-                            <p className="text-blue-100">Customer Service</p>
+                        <div className="flex items-start justify-center gap-4">
+                            <Star className="w-10 h-10 flex-shrink-0 text-yellow-300" fill="currentColor"/>
+                            <div>
+                                <p className="text-3xl lg:text-4xl font-bold">5-Star</p>
+                                <p className="text-blue-100 text-sm lg:text-lg">Customer Service</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
     )
