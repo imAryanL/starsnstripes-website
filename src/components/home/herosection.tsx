@@ -5,7 +5,7 @@ import { ShieldUser, Handshake, Star, BriefcaseBusiness} from 'lucide-react'
 export default function HeroSection() {
     return (
         <section 
-            className="relative bg-cover bg-center bg-no-repeat py-20 md:py-32"
+            className="relative bg-cover bg-center bg-no-repeat h-[70vh] md:h-[75vh] lg:h-[88vh] flex items-start pt-50"
             style={{ backgroundImage: "url('/hero-bg3.jpg')" }}
         >
             {/* Dark overlay for text readability */}
