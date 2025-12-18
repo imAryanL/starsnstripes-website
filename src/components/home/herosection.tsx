@@ -4,26 +4,19 @@ import { ShieldUser, Handshake, Star, BriefcaseBusiness} from 'lucide-react'
 
 export default function HeroSection() {
     return (
-        <section 
-            className="relative bg-cover bg-center bg-no-repeat h-[70vh] md:h-[75vh] lg:h-[88vh] flex items-start pt-50"
+        <section
+            className="relative bg-cover bg-center bg-no-repeat min-h-[100vh] md:h-[75vh] lg:h-[88vh] flex items-start pt-20 md:pt-32"
             style={{ backgroundImage: "url('/hero-bg3.jpg')" }}
         >
             {/* Dark overlay for text readability */}
             <div className="absolute inset-0 bg-blue-900/40"></div>
             
 
-
-
-
-
-
-
-
             {/* Content */}
             <div className="relative container mx-auto px-8 md:px-8 lg:px-12 xl:px-32 text-white">
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    
+
                     {/* Left Side - Text Content */}
                     <div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)' }}>
@@ -47,7 +40,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right Side - Trust Badges */}
-                    <div className="lg:flex flex-col gap-8 bg-white/10 backdrop-blur-sm rounded-xl py-8 px-6 max-w-md lg:mx-0">
+                    <div className="flex flex-col gap-6 md:gap-8 bg-white/10 backdrop-blur-sm rounded-xl py-6 md:py-8 px-6 max-w-md mx-auto lg:mx-0 mt-8 lg:mt-0">
                         <div className="flex items-start justify-center gap-4">
                             <BriefcaseBusiness className="w-10 h-10 flex-shrink-0"/>
                             <div>
