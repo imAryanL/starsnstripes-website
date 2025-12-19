@@ -20,7 +20,7 @@ export default function HeroSection() {
                     {/* Left Side - Text Content */}
                     <div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)' }}>
-                            Protecting South Florida Businesses and Families
+                            Protecting Businesses and Families Nationwide
                         </h1>
                         
                         <p className="text-xl mb-8 max-w-2xl" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.6)' }}>
@@ -42,21 +42,21 @@ export default function HeroSection() {
                     {/* Right Side - Trust Badges */}
                     <div className="flex flex-col gap-6 md:gap-8 bg-white/10 backdrop-blur-sm rounded-xl py-6 md:py-8 px-6 max-w-md mx-auto lg:mx-0 mt-8 lg:mt-0">
                         <div className="flex items-start justify-center gap-4">
-                            <BriefcaseBusiness className="w-10 h-10 flex-shrink-0"/>
+                            <BriefcaseBusiness className="w-10 h-10 flex-shrink-0 mt-2"/>
                             <div>
                                 <p className="text-3xl lg:text-4xl font-bold">20+</p>
                                 <p className="text-blue-100 text-sm lg:text-lg">Years Experience</p>
                             </div>
                         </div>
                         <div className="flex items-start justify-center gap-4">
-                            <ShieldUser className="w-10 h-10 flex-shrink-0"/>
+                            <ShieldUser className="w-10 h-10 flex-shrink-0 mt-2"/>
                             <div>
                                 <p className="text-3xl lg:text-4xl font-bold">500+</p>
                                 <p className="text-blue-100 text-sm lg:text-lg">Clients Protected</p>
                             </div>
                         </div>
                         <div className="flex items-start justify-center gap-4">
-                            <Star className="w-10 h-10 flex-shrink-0 text-yellow-300" fill="currentColor"/>
+                            <Star className="w-10 h-10 flex-shrink-0 text-yellow-300 mt-2 " fill="currentColor"/>
                             <div>
                                 <p className="text-3xl lg:text-4xl font-bold">5-Star</p>
                                 <p className="text-blue-100 text-sm lg:text-lg">Customer Service</p>
