@@ -9,15 +9,13 @@ import Image from 'next/image'
 
 export default function Footer(){
     return (
-        <footer className="bg-blue-900 text-white">
+        <footer className="bg-blue-900 text-white border-t border-blue-500">
             <div className="container mx-auto px-8 md:px-8 lg:px-12 xl:px-32 py-12">
 
 
                 {/* Footer grid style*/}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-        
-
 
 
                     {/* Column 1: Logo & Description */}
