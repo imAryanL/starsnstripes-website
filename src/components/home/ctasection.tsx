@@ -21,7 +21,7 @@ export default function FinalCTA() {
                     
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg" className="bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-bold text-lg px-8 py-6">
+                        <Button asChild size="lg" className="bg-red-600 hover:bg-red-400 active:bg-red-800 text-white font-bold text-lg px-8 py-6">
                             <Link href="/quote" className="flex items-center gap-2">
                                 Get a Free Quote
                                 <ArrowRight className="w-5 h-5"/>

@@ -34,7 +34,6 @@ export default function HeroSection() {
                                     Get a Free Quote
                                     <ArrowRight className="w-6 h-6"/>
                                 </Link>
-                                
                             </Button>
                             
                             <Button asChild size="lg" className="bg-white text-black hover:bg-gray-300 font-bold px-8 py-6 text-lg">

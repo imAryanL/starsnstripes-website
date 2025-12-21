@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
+
 // Font files - Poppins for bold, modern design
 const poppins = Poppins({
   weight: ["400", "600", "700", "800"],

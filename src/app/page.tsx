@@ -6,7 +6,7 @@ import CTASection from '@/components/home/ctasection'
 
 
 
-
+// THIS PAGE.TSX FILE IS FOR HOME PAGE ONLY "/" is the HOME PAGE in NavBar file
 export default function Home() {
   return (
     <main>
