@@ -58,18 +58,15 @@ export default function AboutPage() {
                         <div className="flex justify-center">
                             <div className="w-72 h-72 md:w-80 md:h-80 bg-slate-200 rounded-2xl flex items-center justify-center">
                                 {/* Placeholder - replace with actual image later */}
-                                <p className="text-slate-500 text-center px-4">
-                                    Photo of Amir<br />Coming Soon
-                                </p>
-                                {/* When you have the image, use this instead:
+                                
                                 <Image 
-                                    src="/amir.jpg" 
+                                    src="/amir.png" 
                                     alt="Amir Lakhani" 
                                     width={320} 
                                     height={320}
                                     className="rounded-2xl object-cover"
                                 />
-                                */}
+                                
                             </div>
                         </div>
 

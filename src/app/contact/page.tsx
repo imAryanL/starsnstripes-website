@@ -6,7 +6,7 @@ export default function ContactPage() {
     return (
         <main>
             {/* 1. Header Section - Matching the About Page */}
-            <section className="bg-blue-900 py-20 text-center text-white">
+            <section className="bg-blue-900 py-16 text-center text-white">
                 <div className="container mx-auto px-8">
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-4">
                         Get in Touch
