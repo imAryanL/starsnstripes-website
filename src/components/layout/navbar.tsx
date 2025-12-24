@@ -79,7 +79,7 @@ export default function Navbar() {
                     {/* Call to Action button which is "Get a Quote" */}
                     <a 
                       href="/quote" 
-                      className="hidden md:block bg-blue-800 hover:bg-blue-700 active:bg-blue-600 text-white font-medium px-6 py-3 rounded-md active:scale-95 transition-all duration-100"
+                      className="hidden md:block bg-blue-800 hover:bg-blue-700 active:bg-blue-800 text-white font-bold px-6 py-3 rounded-md active:scale-95 transition-all duration-100"
                     >
                       Get a Quote
                     </a>

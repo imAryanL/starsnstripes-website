@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button'
 export default function ContactPage() {
     return (
         <main>
-            {/* 1. Header Section - Matching the About Page */}
+            {/* Header Section - Matching the About Page */}
             <section className="bg-blue-900 py-16 text-center text-white">
                 <div className="container mx-auto px-8">
-                    <h1 className="text-4xl md:text-6xl font-extrabold mb-4">
+                    <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
                         Get in Touch
                     </h1>
                     <p className="text-xl text-blue-100 max-w-2xl mx-auto">
@@ -17,7 +17,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            {/* 2. Content Grid */}
+            {/* Content Grid */}
             <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-8 md:px-12 lg:px-32">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -96,7 +96,7 @@ export default function ContactPage() {
                                         <input 
                                             type="text" 
                                             className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                            placeholder="Bob"
+                                            placeholder="Susan"
                                         />
                                     </div>
                                     <div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                                     <input 
                                         type="email" 
                                         className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                        placeholder="bobroberts@example.com"
+                                        placeholder="susanroberts@example.com"
                                     />
                                 </div>
 

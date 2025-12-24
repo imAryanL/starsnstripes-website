@@ -16,7 +16,7 @@ import {
     Building2 
 } from 'lucide-react'
 
-// --- DATA SECTIONS (Keeping your excellent detailed content) ---
+// DATA SECTIONS
 
 const commercialServices = [
     {
@@ -135,9 +135,9 @@ const additionalServices = [
     },
 ]
 
-// --- COMPONENT: Single Service Section (Updated Layout) ---
+// COMPONENT: Single Service Section
 // This function creates the design for ONE single service row.
-// Instead of copy-pasting this HTML 12 times, we write it once here.
+// Instead of copy-pasting this HTML 12 times, I will write it in one entire file.
 // The main function sends data (Title, Icon, Description) into this "template".
 function ServiceSection({ service }: { service: typeof commercialServices[0] }) {
     return (
@@ -222,7 +222,7 @@ export default function ServicesPage() {
             {/* Hero Banner */}
             <section className="bg-blue-900 py-16">
                 <div className="container mx-auto px-8 md:px-8 lg:px-12 xl:px-32 text-center">
-                    <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
                         Our Services
                     </h1>
                     <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
