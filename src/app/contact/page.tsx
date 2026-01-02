@@ -1,8 +1,112 @@
-import { Mail, MapPin, Phone, Clock, Send } from 'lucide-react'
+"use client"
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { Mail, MapPin, Phone, Clock, Send, CheckCircle, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 
 export default function ContactPage() {
+    // STATE VARIABLES - These track what's happening in the form
+    // isSubmitting: true when form is being sent, false otherwise (for loading spinner)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    // isSuccess: true when email was sent successfully (to show success message)
+    const [isSuccess, setIsSuccess] = useState(false)
+    // error: holds error message if something goes wrong, empty string if no error
+    const [error, setError] = useState('')
+    // State for phone number (needed for formatting)
+    const [phone, setPhone] = useState('')
+
+
+
+    // Handle name input - only allow letters, spaces, hyphens, and apostrophes
+    // This prevents numbers and special characters in name fields
+    const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // Replace anything that's not a letter, space, hyphen, or apostrophe with nothing
+        const value = e.target.value.replace(/[^a-zA-Z\s'-]/g, '')
+        e.target.value = value
+    }
+
+
+
+    // Format phone number as user types: (555) 555-5555
+    const handlePhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // Remove all non-digit characters
+        const digits = e.target.value.replace(/\D/g, '')
+
+        // Limit to 10 digits
+        const limitedDigits = digits.slice(0, 10)
+
+        // Format the phone number
+        let formatted = ''
+        if (limitedDigits.length > 0) {
+            formatted = '(' + limitedDigits.slice(0, 3)
+        }
+        if (limitedDigits.length >= 3) {
+            formatted += ') ' + limitedDigits.slice(3, 6)
+        }
+        if (limitedDigits.length >= 6) {
+            formatted += '-' + limitedDigits.slice(6, 10)
+        }
+
+        setPhone(formatted)
+    }
+
+
+    
+    // This function runs when the user clicks "Send Message"
+    // async = this function will wait for things (like the API call)
+    // e = the form event (contains info about the form submission)
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        // Prevent the default form behavior (which would refresh the page)
+        e.preventDefault()
+        // Show loading state - button will show spinner
+        setIsSubmitting(true)
+        // Clear any previous error messages
+        setError('')
+
+        // FormData is a built-in browser API that grabs all form field values
+        // e.currentTarget is the form element itself
+        const formData = new FormData(e.currentTarget)
+
+        // Build an object with the form data to send to the API
+        // formData.get('firstName') gets the value from the input with name="firstName"
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+        }
+
+        try {
+            // fetch() sends an HTTP request to our API endpoint
+            const response = await fetch('/api/contact', {
+                method: 'POST',              // POST = sending data to server
+                headers: { 'Content-Type': 'application/json' },  // Tell server we're sending JSON
+                body: JSON.stringify(data),  // Convert our data object to JSON string
+            })
+
+            // response.ok is true if status is 200-299 (success)
+            if (response.ok) {
+                setIsSuccess(true)  // Show success message
+            } else {
+                setError('Something went wrong. Please try again.')
+            }
+        } catch {
+            // catch runs if fetch() itself fails (network error, etc.)
+            setError('Something went wrong. Please try again.')
+        } finally {
+            // finally alyways runs, whether success or error
+            // Turn off the loading spinner
+            setIsSubmitting(false)
+        }
+    }
+
+
+
+
+    
     return (
         <main>
             {/* Header Section - Matching the About Page */}
@@ -84,75 +188,129 @@ export default function ContactPage() {
 
                         {/* RIGHT COLUMN: Contact Form */}
                         <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-slate-200">
-                            <h3 className="text-2xl font-bold text-blue-900 mb-6">
-                                Send Us a Message
-                            </h3>
-                            <form className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            First Name
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                            placeholder="Susan"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            Last Name
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                            placeholder="Roberts"
-                                        />
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                        Email
-                                    </label>
-                                    <input 
-                                        type="email" 
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                        placeholder="susanroberts@example.com"
-                                    />
+                            {/* - If isSuccess is TRUE  → show the success message
+                                - If isSuccess is FALSE → show the form 
+                            */}
+                            {isSuccess ? (
+                                <div className="text-center py-12">
+                                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                                    <h3 className="text-2xl font-bold text-blue-900 mb-2">Message Sent!</h3>
+                                    <p className="text-slate-600 mb-6">We'll get back to you within 24 hours.</p>
+                                    <Button
+                                        onClick={() => {
+                                            setIsSuccess(false)
+                                            setPhone('')  // Reset phone field
+                                        }}
+                                        className="bg-red-600 hover:bg-red-400 active:bg-red-800 text-white font-bold py-6 text-lg cursor-pointer"
+                                    >
+                                        <Send className="w-5 h-5" />
+                                        Send Another Message
+                                    </Button>
                                 </div>
+                            ) : (
+                                // <> is a React Fragment - it can wrap multiple elements
+                                // without adding an extra <div> to the HTML output
+                                <>
+                                    <h3 className="text-2xl font-bold text-blue-900 mb-6">
+                                        Send Us a Message
+                                    </h3>
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                                                    First Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="firstName"
+                                                    onChange={handleNameInput}
+                                                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Susan"
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                                                    Last Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="lastName"
+                                                    onChange={handleNameInput}
+                                                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Roberts"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                        Phone
-                                    </label>
-                                    <input 
-                                        type="tel" 
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                        placeholder="(555) 555-5555"
-                                    />
-                                </div>
+                                        <div>
+                                            <label className="block text-sm font-semibold text-slate-700 mb-2">
+                                                Email
+                                            </label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="susanroberts@example.com"
+                                                required
+                                            />
+                                        </div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                        Message
-                                    </label>
-                                    <textarea 
-                                        rows={4}
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                                        placeholder="How can we help you?"
-                                    ></textarea>
-                                </div>
+                                        <div>
+                                            <label className="block text-sm font-semibold text-slate-700 mb-2">
+                                                Phone
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={phone}
+                                                onChange={handlePhoneInput}
+                                                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="(555) 555-5555"
+                                                required
+                                            />
+                                        </div>
 
-                                <Button 
-                                    type="submit" 
-                                    className="w-full bg-red-600 hover:bg-red-400 active:bg-red-800 text-white font-bold py-6 text-lg cursor-pointer"
-                                >
-                                    Send Message
-                                </Button>
-                            </form>
+                                        <div>
+                                            <label className="block text-sm font-semibold text-slate-700 mb-2">
+                                                Message
+                                            </label>
+                                            <textarea
+                                                rows={4}
+                                                name="message"
+                                                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                                                placeholder="How can we help you?"
+                                                required
+                                            ></textarea>
+                                        </div>
+
+                                        {error && (
+                                            <p className="text-red-600 text-sm">{error}</p>
+                                        )}
+
+                                        <Button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="w-full bg-red-600 hover:bg-red-400 active:bg-red-800 text-white font-bold py-6 text-lg cursor-pointer"
+                                        >
+                                            {isSubmitting ? (
+                                                <span className="flex items-center justify-center gap-2">
+                                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                                    Sending...
+                                                </span>
+                                            ) : (
+                                                <span className="flex items-center justify-center gap-2">
+                                                    <Send className="w-5 h-5" />
+                                                    Send Message
+                                                </span>
+                                            )}
+                                        </Button>
+                                    </form>
+                                </>
+                            )}
                         </div>
-
                     </div>
                 </div>
             </section>
