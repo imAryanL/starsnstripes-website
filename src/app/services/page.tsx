@@ -137,11 +137,11 @@ const additionalServices = [
 
 // COMPONENT: Single Service Section
 // This function creates the design for ONE single service row.
-// Instead of copy-pasting this HTML 12 times, I will write it in one entire file.
+// Instead of copy-pasting this HTML 12 times, I'll write it in one entire file.
 // The main function sends data (Title, Icon, Description) into this "template".
-function ServiceSection({ service }: { service: typeof commercialServices[0] }) {
+function ServiceSection({ service, id }: { service: typeof commercialServices[0], id: string }) {
     return (
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start py-14 border-b border-slate-300 last:border-b-0">
+        <div id={id} className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start py-14 border-b border-slate-300 last:border-b-0 scroll-mt-24">
 
             {/* Icon Side - Fixed Width */}
             <div className="flex-shrink-0 pt-2">
@@ -248,9 +248,10 @@ export default function ServicesPage() {
 
                     {/* Services List */}
                     <div>
-                        {commercialServices.map((service, index) => (
-                            <ServiceSection key={index} service={service} />
-                        ))}
+                        {commercialServices.map((service, index) => {
+                            const serviceIds = ['gas-stations', 'restaurants', 'hotels-motels', 'shopping-centers', 'convenience-stores', 'liquor-stores', 'smoke-shops', 'churches'];
+                            return <ServiceSection key={index} service={service} id={serviceIds[index]} />
+                        })}
                     </div>
                 </div>
             </section>
@@ -273,9 +274,10 @@ export default function ServicesPage() {
 
                     {/* Services List */}
                     <div>
-                        {personalServices.map((service, index) => (
-                            <ServiceSection key={index} service={service} />
-                        ))}
+                        {personalServices.map((service, index) => {
+                            const serviceIds = ['homeowners-insurance', 'auto-insurance'];
+                            return <ServiceSection key={index} service={service} id={serviceIds[index]} />
+                        })}
                     </div>
                 </div>
             </section>
@@ -297,9 +299,10 @@ export default function ServicesPage() {
 
                     {/* Services List */}
                     <div>
-                        {additionalServices.map((service, index) => (
-                            <ServiceSection key={index} service={service} />
-                        ))}
+                        {additionalServices.map((service, index) => {
+                            const serviceIds = ['workers-compensation', 'commercial-insurance'];
+                            return <ServiceSection key={index} service={service} id={serviceIds[index]} />
+                        })}
                     </div>
                 </div>
             </section>

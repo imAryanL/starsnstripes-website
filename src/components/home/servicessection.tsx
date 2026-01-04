@@ -18,6 +18,8 @@ import {
 
 
 // Data for each service card - will be mapped to display insurance offerings
+// Each "link" uses a hash (#) for deep linking: /page#section-id
+// The # tells the browser: "Go to this page, THEN scroll to the element with this ID"
 const services = [
 
     {
@@ -25,7 +27,8 @@ const services = [
         title: "Commercial Insurance",
         description: "Protect your business with comprehensive coverage for property, liability, and more.",
         color: "text-blue-600",
-        bgColor: "bg-blue-50" // Business Blue
+        bgColor: "bg-blue-50", // Business Blue
+        link: "/services#commercial-insurance" // Goes to /services page, then scrolls to element with id="commercial-insurance"
 
     },
     {
@@ -33,7 +36,8 @@ const services = [
         title: "Gas Stations" ,
         description: "Specialized coverage for gas station owners and operators.",
         color: "text-red-600",
-        bgColor: "bg-red-50" // Personal/Urgent Red
+        bgColor: "bg-red-50", // Personal/Urgent Red
+        link: "/services#gas-stations"
 
     },
     {
@@ -41,7 +45,8 @@ const services = [
         title: "Restaurants" ,
         description: "Customized insurance solutions for restaurants and food service businesses.",
         color: "text-blue-600",
-        bgColor: "bg-blue-50"
+        bgColor: "bg-blue-50",
+        link: "/services#restaurants"
 
     },
     {
@@ -49,7 +54,8 @@ const services = [
         title: "Auto Insurance" ,
         description: "Coverage for personal and commercial vehicles to keep you on the road.",
         color: "text-red-600",
-        bgColor: "bg-red-50" 
+        bgColor: "bg-red-50",
+        link: "/services#auto-insurance"
 
     },
     {
@@ -57,7 +63,8 @@ const services = [
         title: "Homeowners Insurance",
         description: "Safeguard your home and belongings against unexpected events.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#homeowners-insurance"
 
     },
     {
@@ -65,7 +72,8 @@ const services = [
         title: "Liquor Stores",
         description: "Specific liability and property coverage for liquor inventory and alcohol sales.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#liquor-stores"
 
     },
     {
@@ -73,44 +81,50 @@ const services = [
         title: "Shopping Centers",
         description: "Property and liability protection for strip malls, retail plazas, and building owners.",
         color: "text-blue-600",
-        bgColor: "bg-blue-50" 
+        bgColor: "bg-blue-50",
+        link: "/services#shopping-centers"
     },
     {
         icon: HardHat,
         title: "Workers Compensation",
         description: "Protect your employees and your business from workplace injuries.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#workers-compensation"
     },
         {
         icon: Cigarette,
         title: "Smoke Shops" ,
         description: "Customized inventory and liability coverage for tobacco and vape retailers.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#smoke-shops"
     },
     {
         icon: Church,
         title: "Churches",
         description: "Property and liability protection for places of worship and non-profit organizations.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#churches"
     },
     {
         icon: ShoppingBasket,
         title: "Convenience Stores",
         description: "High-traffic liability and inventory theft protection for retail operations.",
         color: "text-red-600",
-        bgColor: "bg-red-50"
+        bgColor: "bg-red-50",
+        link: "/services#convenience-stores"
     },
     {
         icon: Hotel,
         title: "Hotels & Motels",
         description: "Tailored protection for the hospitality industry, covering property, guests, and liability.",
         color: "text-blue-600",
-        bgColor: "bg-blue-50"
+        bgColor: "bg-blue-50",
+        link: "/services#hotels-motels"
     },
-    
+
 ]
 
 
@@ -135,15 +149,16 @@ export default function ServicesSection(){
                 {/* Service Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service, index) => (
-                    <div 
+                    <Link
                         key={index}
-                        className="group bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:bg-white hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+                        href={service.link}
+                        className="group bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:bg-white hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer block"
                     >
-                        
+
                         <div className={`mb-6 p-4 ${service.bgColor} w-fit rounded-xl group-hover:scale-110 transition-transform duration-300`}>
                             <service.icon className={`w-10 h-10 ${service.color}`}/>
                         </div>
-                        
+
                         <h3 className="text-lg font-extrabold text-blue-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
                             {service.title}
                         </h3>
@@ -151,7 +166,7 @@ export default function ServicesSection(){
                         <p className="text-slate-700 leading-relaxed font-medium">
                             {service.description}
                         </p>
-                    </div>
+                    </Link>
                 ))}
                 </div>
             </div>
