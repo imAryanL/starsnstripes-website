@@ -141,7 +141,7 @@ const additionalServices = [
 // The main function sends data (Title, Icon, Description) into this "template".
 function ServiceSection({ service, id }: { service: typeof commercialServices[0], id: string }) {
     return (
-        <div id={id} className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start py-14 border-b border-slate-300 last:border-b-0 scroll-mt-24">
+        <div id={id} className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start py-14 border-b border-slate-300 last:border-b-0">
 
             {/* Icon Side - Fixed Width */}
             <div className="flex-shrink-0 pt-2">

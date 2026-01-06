@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
             from: 'Stars & Stripes Quote <onboarding@resend.dev>',
-            to: 'aryanlakhani2001@gmail.com',
+            to: 'amir@starsnstripesins.com',
             replyTo: email,
             subject: `New Quote: ${insuranceType} - ${firstName} ${lastName}`,
             html: `

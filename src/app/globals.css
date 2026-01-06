@@ -120,5 +120,6 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 8rem; /* Accounts for sticky navbar height (h-28 = 7rem + small buffer) */
   }
 }

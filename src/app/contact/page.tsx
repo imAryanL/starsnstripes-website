@@ -175,8 +175,8 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-bold text-blue-900 text-lg">Headquarters</h3>
                                         <p className="text-slate-600">
-                                            2275 W. State Rd 84, Suite 105<br />
-                                            Fort Lauderdale, FL 33312
+                                            1560 Sawgrass Corporate Parkway<br />
+                                            Sunrise, FL 33323
                                         </p>
                                         <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
                                             <Clock className="w-4 h-4" /> Mon-Fri: 9AM — 4PM EST

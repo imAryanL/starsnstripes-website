@@ -77,8 +77,8 @@ export default function Footer(){
                         <h3 className="text-lg font-bold mb-4">Contact Us</h3>
                         <div className="flex flex-col gap-2 text-blue-200">
                         
-                        <span className="font-semibold text-white">Address:</span><p>2275 W. State Rd 84, Suite 105</p>
-                        <p>Fort Lauderdale, FL 33312</p>
+                        <span className="font-semibold text-white">Address:</span><p>1560 Sawgrass Corporate Parkway</p>
+                        <p>Sunrise, FL 33323</p>
                         <p>
                             <span className="font-semibold text-white">Phone:</span> 954-802-7561
                         </p>
@@ -98,6 +98,11 @@ export default function Footer(){
 
                 {/* Copyright Bar */}
                 <div className="border-t border-blue-500 mt-8 pt-6">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                        <Link href="/privacy" className="text-blue-200 hover:text-white text-sm transition-colors">
+                            Privacy Policy
+                        </Link>
+                    </div>
                     <p className="text-center text-blue-200 text-sm">
                         © 2025 Stars & Stripes Insurance. All rights reserved.
                     </p>

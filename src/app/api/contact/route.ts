@@ -21,7 +21,7 @@ export async function POST(request: Request) {
             from: 'Stars & Stripes Contact <onboarding@resend.dev>',
 
             // Who receives the email
-            to: 'aryanlakhani2001@gmail.com',
+            to: 'amir@starsnstripesins.com',
 
             // When Amir clicks "Reply" in Outlook, it will go to the customer, not the website system email.
             replyTo: email,

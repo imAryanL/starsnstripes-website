@@ -15,7 +15,7 @@ const reasons = [
     {
         icon: MapPin,
         title: "Nationwide Coverage",
-        description: "Headquartered in Fort Lauderdale and serving clients across all 50 states — wherever you are, we've got you covered.",
+        description: "Headquartered in Sunrise, Florida and serving clients across all 50 states — wherever you are, we've got you covered.",
     },
     {
         icon: ShieldCheck,
