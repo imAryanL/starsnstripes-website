@@ -57,7 +57,7 @@ export default function HeroSection() {
                         <div className="flex items-start justify-center gap-4">
                             <ShieldUser className="w-10 h-10 flex-shrink-0 mt-2"/>
                             <div>
-                                <p className="text-3xl lg:text-4xl font-bold">500+</p>
+                                <p className="text-3xl lg:text-4xl font-bold">100+</p>
                                 <p className="text-blue-100 text-sm lg:text-lg">Clients Protected</p>
                             </div>
                         </div>

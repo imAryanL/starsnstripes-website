@@ -179,7 +179,7 @@ export default function ContactPage() {
                                             Sunrise, FL 33323
                                         </p>
                                         <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
-                                            <Clock className="w-4 h-4" /> Mon-Fri: 9AM — 4PM EST
+                                            <Clock className="w-4 h-4" /> Mon-Fri: 9AM — 5PM EST
                                         </p>
                                     </div>
                                 </div>

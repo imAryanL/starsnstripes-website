@@ -83,13 +83,13 @@ export default function Footer(){
                             <span className="font-semibold text-white">Phone:</span> 954-802-7561
                         </p>
                         <p>
-                            <span className="font-semibold text-white">Fax:</span> 954-802-7561
+                            <span className="font-semibold text-white">Fax:</span> 954-509-8952
                         </p>
                         <p>
                             <span className="font-semibold text-white">Email:</span> amir@starnstripesins.com
                         </p>
                         <p>
-                            <span className="font-semibold text-white">Hours:</span> Mon-Fri 9AM-4PM
+                            <span className="font-semibold text-white">Hours:</span> Mon-Fri 9AM-5PM
                         </p>
                         </div>
                     </div>
