@@ -104,7 +104,7 @@ export default function Footer(){
                         </Link>
                     </div>
                     <p className="text-center text-blue-200 text-sm">
-                        © 2025 Stars & Stripes Insurance. All rights reserved.
+                        © 2026 Stars & Stripes Insurance. All rights reserved.
                     </p>
                 </div>
 
