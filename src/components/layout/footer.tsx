@@ -28,7 +28,7 @@ export default function Footer(){
                         className="mb-4"
                         />
                         <p className="text-blue-200">
-                        Providing peace of mind for businesses and families nationwide since day one.
+                        Providing peace of mind for businesses and families across Florida, Texas, South Carolina, Oklahoma, Colorado, and Georgia.
                         </p>
                     </div>
 

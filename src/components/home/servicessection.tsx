@@ -143,7 +143,7 @@ export default function ServicesSection(){
                 </h2>
 
                 <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-                    Full-service insurance solutions for businesses and families nationwide.
+                    Full-service insurance solutions for businesses and families across FL, TX, SC, OK, CO, and GA.
                 </p>
                 </div>
                 {/* Service Cards Grid */}

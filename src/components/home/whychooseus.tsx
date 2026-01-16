@@ -14,8 +14,8 @@ import {
 const reasons = [
     {
         icon: MapPin,
-        title: "Nationwide Coverage",
-        description: "Headquartered in Sunrise, Florida and serving clients across all 50 states — wherever you are, we've got you covered.",
+        title: "Multi-State Coverage",
+        description: "Headquartered in Sunrise, Florida and serving clients across Florida, Texas, South Carolina, Oklahoma, Colorado, and Georgia.",
     },
     {
         icon: ShieldCheck,
@@ -62,7 +62,7 @@ export default function WhyChooseUs() {
                     </h2>
 
                     <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                    We're not just another insurance agency. Here's why clients nationwide trust us.
+                    We're not just another insurance agency. Here's why clients across our 6-state region trust us.
                     </p>
                 </div>
                 {/* Column Grid */}
