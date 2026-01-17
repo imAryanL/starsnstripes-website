@@ -1,32 +1,39 @@
-// TypeScript type definitions for quote form components
+// WHAT THIS FILE DOES:
+// Defines TypeScript "shapes" (interfaces) for our quote form data
+// Think of these as templates or blueprints that say "this object must have these properties"
 
 import { LucideIcon } from 'lucide-react'
 
+// TYPE: What kind of form field is it?
+// Can only be one of these three options: 'text', 'number', or 'select'
 export type FieldType = 'text' | 'number' | 'select'
 
-// Single form field configuration
+// INTERFACE: Blueprint for a single form field
+// Example: { name: "Annual Sales", type: "text", placeholder: "e.g. $500,000" }
 export interface FormField {
-  name: string
-  type: FieldType
-  placeholder?: string
-  required?: boolean
-  options?: string[]
-  defaultValue?: string
+  name: string          // Label for the field (e.g., "Annual Sales")
+  type: FieldType       // Type of input: 'text', 'number', or 'select'
+  placeholder?: string  // Hint text inside input (the ? means optional)
+  required?: boolean    // Is this field required?
+  options?: string[]    // For dropdowns: ["Yes", "No"]
+  defaultValue?: string // Default selected value for dropdowns
 }
 
-// Configuration for one insurance type
+// INTERFACE: Blueprint for one insurance type's configuration
+// Example: Gas Station has color "red", Fuel icon, and 4 fields
 export interface InsuranceTypeConfig {
-  color: 'red' | 'orange' | 'blue' | 'purple' | 'green' | 'amber' | 'slate' | 'indigo' | 'teal' | 'sky' | 'yellow' | 'rose'
-  icon: LucideIcon
-  fields: FormField[]
+  color: 'red' | 'orange' | 'blue' | 'purple' | 'green' | 'amber' | 'slate' | 'indigo' | 'teal' | 'sky' | 'yellow' | 'rose'  // Must be one of these colors
+  icon: LucideIcon      // Icon component (from lucide-react)
+  fields: FormField[]   // Array of form fields for this insurance type
 }
 
-// All insurance types configuration
+// INTERFACE: Blueprint for ALL insurance types together
+// This is like a dictionary: { "Gas Station": {...}, "Restaurant": {...} }
 export interface InsuranceTypesConfig {
-  [key: string]: InsuranceTypeConfig
+  [key: string]: InsuranceTypeConfig  // Any string key → InsuranceTypeConfig value
 }
 
-// Complete form submission data
+// INTERFACE: Blueprint for the complete form data when submitted
 export interface QuoteFormData {
   firstName: string
   lastName: string
@@ -35,5 +42,5 @@ export interface QuoteFormData {
   insuranceType: string
   businessName: string
   message: string
-  dynamicFields: Record<string, string>
+  dynamicFields: Record<string, string>  // Object like { "Annual Sales": "$500k", "Has Pool": "Yes" }
 }

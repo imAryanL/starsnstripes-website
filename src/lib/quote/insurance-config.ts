@@ -1,30 +1,52 @@
-// Insurance type configurations - each type has a color, icon, and fields
+// ============================================
+// WHAT THIS FILE DOES:
+// ============================================
+// This file contains ALL the data for the 13 insurance types
+// Instead of having 13 hardcoded if/else blocks in your component,
+// we store the data here and the component looks it up dynamically
+//
+// BENEFITS:
+// 1. To add a new insurance type, just add an entry here (no component changes needed)
+// 2. Easy to update fields without touching any React code
+// 3. All insurance data in one place instead of scattered across 400+ lines
+//
+// STRUCTURE:
+// Each insurance type has:
+//   - color: used to style the form section (red, blue, etc.)
+//   - icon: the icon to show next to the type name
+//   - fields: array of form fields specific to this insurance type
+// ============================================
 
+// Import icons from lucide-react library
 import {
-  Fuel,
-  Utensils,
-  Hotel,
-  Store,
-  ShoppingBasket,
-  Wine,
-  Cigarette,
-  Church,
-  Home,
-  Car,
-  HardHat,
-  Building2
+  Fuel,         // Gas pump icon
+  Utensils,     // Restaurant/food icon
+  Hotel,        // Hotel building icon
+  Store,        // Store/shop icon
+  ShoppingBasket,  // Shopping basket icon
+  Wine,         // Wine/liquor icon
+  Cigarette,    // Smoke/tobacco icon
+  Church,       // Church icon
+  Home,         // House icon
+  Car,          // Car/auto icon
+  HardHat,      // Worker/construction icon
+  Building2     // Commercial building icon
 } from 'lucide-react'
 import { InsuranceTypesConfig } from './types'
 
+// MAIN DATA OBJECT: All 13 insurance types and their fields
+// Think of this as a giant lookup table
+// Example: insuranceTypes["Gas Station"] → gives you color, icon, and 4 fields
 export const insuranceTypes: InsuranceTypesConfig = {
+  // INSURANCE TYPE #1: Gas Station
   "Gas Station": {
-    color: "red",
-    icon: Fuel,
-    fields: [
+    color: "red",      // Form section will be red-themed
+    icon: Fuel,        // Shows gas pump icon
+    fields: [          // 4 fields specific to gas stations
       {
-        name: "Annual Gallons Sold",
-        type: "text",
-        placeholder: "e.g. 1,000,000"
+        name: "Annual Gallons Sold",     // Field label
+        type: "text",                    // Text input
+        placeholder: "e.g. 1,000,000"    // Hint text
       },
       {
         name: "Convenience Store Sales",
@@ -33,9 +55,9 @@ export const insuranceTypes: InsuranceTypesConfig = {
       },
       {
         name: "Car Wash",
-        type: "select",
-        options: ["No", "Yes"],
-        defaultValue: "No"
+        type: "select",              // Dropdown
+        options: ["No", "Yes"],      // Two choices
+        defaultValue: "No"           // Pre-selected option
       },
       {
         name: "24 Hour Operation",
@@ -45,6 +67,9 @@ export const insuranceTypes: InsuranceTypesConfig = {
       }
     ]
   },
+
+  // INSURANCE TYPE #2: Restaurant
+  // Same structure: color, icon, fields array
   "Restaurant": {
     color: "orange",
     icon: Utensils,
