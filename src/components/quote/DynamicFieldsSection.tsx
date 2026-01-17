@@ -1,11 +1,14 @@
 import { insuranceTypes } from '@/lib/quote/insurance-config'
 import { FormField } from '@/lib/quote/types'
 
+// This component receives one prop: the insurance type the user selected (e.g., "Gas Station")
 interface DynamicFieldsSectionProps {
-  insuranceType: string
+  insuranceType: string  // Example: "Gas Station", "Restaurant", etc.
 }
 
-// Maps color names to Tailwind CSS classes
+// Lookup table: Converts color names to Tailwind CSS classes
+// Each insurance type has a color (defined in insurance-config.ts)
+// This object maps those color names to the actual CSS classes we need
 const colorClasses = {
   red: {
     container: "bg-red-50 border-red-200",
@@ -70,16 +73,23 @@ const colorClasses = {
 }
 
 export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSectionProps) {
+  // Step 1: Look up the configuration for this insurance type
+  // Example: if insuranceType = "Gas Station", this gets the Gas Station config (color, icon, fields)
   const config = insuranceTypes[insuranceType]
 
+  // Step 2: If no config found (e.g., user selected "Other"), don't render anything
   if (!config) return null
 
-  const Icon = config.icon
-  const colors = colorClasses[config.color]
+  // Step 3: Extract the icon and colors for this insurance type
+  const Icon = config.icon  // e.g., Fuel icon for Gas Station
+  const colors = colorClasses[config.color]  // e.g., red classes for Gas Station
 
+  // Helper function: Renders a single form field (input or dropdown)
   const renderField = (field: FormField) => {
+    // CSS classes that all inputs share
     const baseInputClasses = "w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2"
 
+    // If it's a dropdown/select field
     if (field.type === "select") {
       return (
         <select
@@ -87,6 +97,7 @@ export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSec
           className={`${baseInputClasses} ${colors.focus} bg-white`}
           defaultValue={field.defaultValue}
         >
+          {/* Loop through options array and create an <option> for each */}
           {field.options?.map(option => (
             <option key={option} value={option}>{option}</option>
           ))}
@@ -94,6 +105,7 @@ export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSec
       )
     }
 
+    // Otherwise, it's a regular text or number input
     return (
       <input
         type={field.type}
@@ -104,21 +116,29 @@ export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSec
     )
   }
 
+  // Step 4: Render the colored box with all the fields for this insurance type
   return (
+    // Colored container (color depends on insurance type)
     <div className={`${colors.container} p-6 rounded-xl border space-y-4`}>
+      {/* Header with icon and insurance type name */}
       <h4 className={`font-bold ${colors.text} flex items-center gap-2`}>
         <Icon className="w-5 h-5" /> {insuranceType} Details
       </h4>
 
+      {/* Grid of form fields (2 columns on desktop, 1 on mobile) */}
       <div className={`grid grid-cols-1 ${config.fields.length === 3 && config.fields[2].name === "Type of Work Performed" ? "md:grid-cols-2" : "md:grid-cols-2"} gap-4`}>
+        {/* Loop through all fields for this insurance type and render each one */}
         {config.fields.map((field, index) => {
+          // Special case: "Type of Work Performed" should be full width
           const isFullWidth = config.fields.length === 3 && index === 2 && field.name === "Type of Work Performed"
 
           return (
             <div key={field.name} className={isFullWidth ? "md:col-span-2" : ""}>
+              {/* Label above the input */}
               <label className="block text-xs font-bold text-slate-600 mb-1">
                 {field.name}
               </label>
+              {/* Render the actual input or select field */}
               {renderField(field)}
             </div>
           )
