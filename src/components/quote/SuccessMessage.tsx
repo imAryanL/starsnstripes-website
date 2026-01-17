@@ -1,3 +1,4 @@
+// Component: Success message shown after quote is submitted - displays confirmation and "Request Another Quote" button
 import { Button } from '@/components/ui/button'
 import { CheckCircle, Send } from 'lucide-react'
 

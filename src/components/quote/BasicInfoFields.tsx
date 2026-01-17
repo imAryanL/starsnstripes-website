@@ -1,3 +1,4 @@
+// Component: Renders the basic contact info fields (Name, Email, Phone, Insurance Type dropdown)
 import { insuranceTypeNames } from '@/lib/quote/insurance-config'
 
 // Props interface: Defines what this component receives from its parent (QuoteForm)
