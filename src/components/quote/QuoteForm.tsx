@@ -1,7 +1,4 @@
 // Component: Main quote form - handles state, validation, submission, and displays BasicInfoFields + DynamicFieldsSection
-
-
-
 "use client"  // This component runs in the browser (needed for useState)
 
 import { useState } from 'react'

@@ -1,24 +1,26 @@
 // Component: Renders the basic contact info fields (Name, Email, Phone, Insurance Type dropdown)
-
-
 import { insuranceTypeNames } from '@/lib/quote/insurance-config'
 
+// Props interface: Defines what this component receives from its parent (QuoteForm)
 interface BasicInfoFieldsProps {
-  phone: string
-  insuranceType: string
-  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
-  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Function that takes a select change event and returns nothing  
-  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
+  phone: string  // Current phone value (formatted as "(555) 555-5555")
+  insuranceType: string  // Currently selected insurance type (e.g., "Gas Station")
 
+  // Function handlers - these are passed down from QuoteForm and called when user types
+  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
+  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Function that takes a select change event and returns nothing
+  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
 }
 
+// This component renders: First Name, Last Name, Email, Phone, and Insurance Type dropdown
+// It receives values and handler functions from QuoteForm and passes them to the inputs
 export default function BasicInfoFields({
-  phone,
-  insuranceType,
-  onPhoneChange,
-  onInsuranceTypeChange,
-  onNameInput
-}: BasicInfoFieldsProps) {
+  phone,                    // Unpack: current phone value
+  insuranceType,            // Unpack: selected insurance type
+  onPhoneChange,            // Unpack: function to call when phone changes
+  onInsuranceTypeChange,    // Unpack: function to call when dropdown changes
+  onNameInput               // Unpack: function to call when name changes
+}: BasicInfoFieldsProps) {  // Type check: make sure we got all required props
   return (
     <>
       {/* Name Fields */}
