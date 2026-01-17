@@ -1,37 +1,30 @@
-// DATA CONFIGURATION FILE
-// This file contains ALL the insurance types and their specific form fields
-// Instead of hardcoding 13 conditional blocks in your component, we define the data here
+// Insurance type configurations - each type has a color, icon, and fields
 
-// Import icons from lucide-react library (these are React components)
 import {
-  Fuel,         // Gas pump icon
-  Utensils,     // Fork & knife icon for restaurants
-  Hotel,        // Building icon
-  Store,        // Store front icon
+  Fuel,
+  Utensils,
+  Hotel,
+  Store,
   ShoppingBasket,
-  Wine,         // Wine bottle icon
-  Cigarette,    // Cigarette icon
-  Church,       // Church icon
-  Home,         // House icon
-  Car,          // Car icon
-  HardHat,      // Construction hat icon
-  Building2     // Office building icon
+  Wine,
+  Cigarette,
+  Church,
+  Home,
+  Car,
+  HardHat,
+  Building2
 } from 'lucide-react'
 import { InsuranceTypesConfig } from './types'
 
-// MAIN CONFIGURATION OBJECT
-// Each insurance type has: a color, an icon, and an array of form fields
-// To add a new insurance type, just add another entry here - no component changes needed!
 export const insuranceTypes: InsuranceTypesConfig = {
-  // Example: Gas Station insurance type
   "Gas Station": {
-    color: "red",      // Uses red color theme (bg-red-50, text-red-800, etc.)
-    icon: Fuel,        // Shows the gas pump icon
-    fields: [          // Array of 4 fields to show when user selects "Gas Station"
+    color: "red",
+    icon: Fuel,
+    fields: [
       {
-        name: "Annual Gallons Sold",     // Label displayed to user
-        type: "text",                    // Text input field
-        placeholder: "e.g. 1,000,000"    // Hint text inside the input
+        name: "Annual Gallons Sold",
+        type: "text",
+        placeholder: "e.g. 1,000,000"
       },
       {
         name: "Convenience Store Sales",
@@ -40,9 +33,9 @@ export const insuranceTypes: InsuranceTypesConfig = {
       },
       {
         name: "Car Wash",
-        type: "select",                  // This is a dropdown menu
-        options: ["No", "Yes"],          // Options in the dropdown
-        defaultValue: "No"               // Default selected option
+        type: "select",
+        options: ["No", "Yes"],
+        defaultValue: "No"
       },
       {
         name: "24 Hour Operation",
@@ -348,9 +341,7 @@ export const insuranceTypes: InsuranceTypesConfig = {
   }
 }
 
-// SEPARATE EXPORT: Just the names for the dropdown menu
-// This array is used in BasicInfoFields to populate the "Insurance Type" dropdown
-// "as const" means TypeScript will treat this as a fixed list (can't be modified)
+// Insurance type names for dropdown
 export const insuranceTypeNames = [
   "Gas Station",
   "Restaurant",
@@ -364,5 +355,5 @@ export const insuranceTypeNames = [
   "Auto",
   "Workers Compensation",
   "Commercial Insurance",
-  "Other"  // "Other" has no fields, so DynamicFieldsSection won't show anything for it
+  "Other"
 ] as const

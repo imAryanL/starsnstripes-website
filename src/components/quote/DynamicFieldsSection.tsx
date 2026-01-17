@@ -1,15 +1,11 @@
-// Import the insurance configuration data (all 13 types and their fields)
 import { insuranceTypes } from '@/lib/quote/insurance-config'
-// Import the TypeScript type definition for a form field
 import { FormField } from '@/lib/quote/types'
 
-// This component only needs one prop: the insurance type selected by the user
 interface DynamicFieldsSectionProps {
-  insuranceType: string  // e.g. "Gas Station", "Restaurant", etc.
+  insuranceType: string
 }
 
-// MAP OF COLORS: Each insurance type has a color, this maps color names to Tailwind classes
-// Example: if color is "red", use "bg-red-50 border-red-200" for the container
+// Maps color names to Tailwind CSS classes
 const colorClasses = {
   red: {
     container: "bg-red-50 border-red-200",
@@ -74,34 +70,23 @@ const colorClasses = {
 }
 
 export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSectionProps) {
-  // Look up the configuration for this insurance type (e.g. "Gas Station" → fields, color, icon)
   const config = insuranceTypes[insuranceType]
 
-  // If there's no config for this type (e.g. "Other"), don't show anything
   if (!config) return null
 
-  // Get the icon component for this insurance type (e.g. Fuel icon for Gas Station)
   const Icon = config.icon
-  // Get the color classes for this insurance type (e.g. red classes for Gas Station)
   const colors = colorClasses[config.color]
 
-  // HELPER FUNCTION: Renders a single form field (either an input or a dropdown)
-  // (field: FormField) means this function receives a field object with name, type, placeholder, etc.
   const renderField = (field: FormField) => {
-    // Base Tailwind classes that ALL inputs share
     const baseInputClasses = "w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2"
 
-    // If this field is a dropdown (select), render a <select> element
     if (field.type === "select") {
       return (
         <select
           name={field.name}
-          // Template literal syntax: `${variable}` inserts the variable into the string
           className={`${baseInputClasses} ${colors.focus} bg-white`}
           defaultValue={field.defaultValue}
         >
-          {/* Loop through all options and create an <option> for each */}
-          {/* The "?" means "only do this if options exists" (optional chaining) */}
           {field.options?.map(option => (
             <option key={option} value={option}>{option}</option>
           ))}
@@ -109,7 +94,6 @@ export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSec
       )
     }
 
-    // Otherwise, render a regular text/number input
     return (
       <input
         type={field.type}
@@ -120,31 +104,21 @@ export default function DynamicFieldsSection({ insuranceType }: DynamicFieldsSec
     )
   }
 
-  // RENDER THE COMPONENT: This is what gets displayed on the page
   return (
-    // Colored container box (color depends on insurance type)
     <div className={`${colors.container} p-6 rounded-xl border space-y-4`}>
-      {/* Header with icon and title (e.g. "🔥 Gas Station Details") */}
       <h4 className={`font-bold ${colors.text} flex items-center gap-2`}>
         <Icon className="w-5 h-5" /> {insuranceType} Details
       </h4>
 
-      {/* Grid layout for the form fields (2 columns on desktop, 1 on mobile) */}
       <div className={`grid grid-cols-1 ${config.fields.length === 3 && config.fields[2].name === "Type of Work Performed" ? "md:grid-cols-2" : "md:grid-cols-2"} gap-4`}>
-        {/* LOOP through all fields for this insurance type and render each one */}
-        {/* .map() transforms each field object into JSX elements */}
         {config.fields.map((field, index) => {
-          // Special case: "Type of Work Performed" should span 2 columns on desktop
           const isFullWidth = config.fields.length === 3 && index === 2 && field.name === "Type of Work Performed"
 
           return (
-            // Each field gets its own container div
             <div key={field.name} className={isFullWidth ? "md:col-span-2" : ""}>
-              {/* Label above the input (displays the field name) */}
               <label className="block text-xs font-bold text-slate-600 mb-1">
                 {field.name}
               </label>
-              {/* Render the actual input/select using our helper function */}
               {renderField(field)}
             </div>
           )
