@@ -1,11 +1,15 @@
+// Component: Renders the basic contact info fields (Name, Email, Phone, Insurance Type dropdown)
+
+
 import { insuranceTypeNames } from '@/lib/quote/insurance-config'
 
 interface BasicInfoFieldsProps {
   phone: string
   insuranceType: string
-  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
-  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
+  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Function that takes a select change event and returns nothing  
+  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
+
 }
 
 export default function BasicInfoFields({

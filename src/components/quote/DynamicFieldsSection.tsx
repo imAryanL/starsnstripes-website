@@ -1,3 +1,6 @@
+// Component: Displays insurance-specific fields based on selected type (e.g., "Annual Gallons Sold" for Gas Station)
+
+
 import { insuranceTypes } from '@/lib/quote/insurance-config'
 import { FormField } from '@/lib/quote/types'
 

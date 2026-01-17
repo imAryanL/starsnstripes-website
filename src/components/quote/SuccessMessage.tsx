@@ -1,9 +1,13 @@
+// Component: Success message shown after quote is submitted - displays confirmation and "Request Another Quote" button
+
+
 import { Button } from '@/components/ui/button'
 import { CheckCircle, Send } from 'lucide-react'
 
 // Props for success message component
 interface SuccessMessageProps {
-  onReset: () => void  // Function to reset form and request another quote
+  onReset: () => void  // Function to reset form and request another quote 
+  // void is a function that takes no parameters and returns nothing
 }
 
 export default function SuccessMessage({ onReset }: SuccessMessageProps) {

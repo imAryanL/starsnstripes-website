@@ -1,11 +1,10 @@
 // WHAT THIS FILE DOES:
 // Defines TypeScript "shapes" (interfaces) for our quote form data
-// Think of these as templates or blueprints that say "this object must have these properties"
+// templates or blueprints that say "this object must have these properties"
 
 import { LucideIcon } from 'lucide-react'
 
 // TYPE: What kind of form field is it?
-// Can only be one of these three options: 'text', 'number', or 'select'
 export type FieldType = 'text' | 'number' | 'select'
 
 // INTERFACE: Blueprint for a single form field
@@ -23,7 +22,7 @@ export interface FormField {
 // Example: Gas Station has color "red", Fuel icon, and 4 fields
 export interface InsuranceTypeConfig {
   color: 'red' | 'orange' | 'blue' | 'purple' | 'green' | 'amber' | 'slate' | 'indigo' | 'teal' | 'sky' | 'yellow' | 'rose'  // Must be one of these colors
-  icon: LucideIcon      // Icon component (from lucide-react)
+  icon: LucideIcon      
   fields: FormField[]   // Array of form fields for this insurance type
 }
 
