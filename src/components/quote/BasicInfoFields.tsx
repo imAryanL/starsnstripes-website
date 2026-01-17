@@ -6,9 +6,9 @@ interface BasicInfoFieldsProps {
   insuranceType: string  // Currently selected insurance type (e.g., "Gas Station")
 
   // Function handlers - these are passed down from QuoteForm and called when user types
-  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Called when phone input changes
-  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Called when dropdown changes
-  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Called when name input changes (validates letters only)
+  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
+  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Function that takes a select change event and returns nothing
+  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function that takes an input change event and returns nothing
 }
 
 // This component renders: First Name, Last Name, Email, Phone, and Insurance Type dropdown
