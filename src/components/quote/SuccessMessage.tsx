@@ -1,8 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { CheckCircle, Send } from 'lucide-react'
 
+// Props for success message component
 interface SuccessMessageProps {
-  onReset: () => void
+  onReset: () => void  // Function to reset form and request another quote
 }
 
 export default function SuccessMessage({ onReset }: SuccessMessageProps) {
