@@ -1,4 +1,4 @@
-"use client"
+"use client"  // This component runs in the browser (needed for useState)
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -8,11 +8,12 @@ import DynamicFieldsSection from './DynamicFieldsSection'
 import SuccessMessage from './SuccessMessage'
 
 export default function QuoteForm() {
-  const [insuranceType, setInsuranceType] = useState("")
-  const [phone, setPhone] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [error, setError] = useState("")
+  // State: Track form data and UI states
+  const [insuranceType, setInsuranceType] = useState("")  // Selected insurance type
+  const [phone, setPhone] = useState("")  // Formatted phone number
+  const [isSubmitting, setIsSubmitting] = useState(false)  // Is form currently being submitted?
+  const [isSuccess, setIsSuccess] = useState(false)  // Was submission successful?
+  const [error, setError] = useState("")  // Error message to display
 
   // Only allow letters, spaces, hyphens, apostrophes in name fields
   const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,11 +21,12 @@ export default function QuoteForm() {
     e.target.value = value
   }
 
-  // Auto-format phone number as (555) 555-5555
+  // Handler: Auto-format phone number as (555) 555-5555
   const handlePhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const digits = e.target.value.replace(/\D/g, '')
-    const limitedDigits = digits.slice(0, 10)
+    const digits = e.target.value.replace(/\D/g, '')  // Remove non-digits
+    const limitedDigits = digits.slice(0, 10)  // Max 10 digits
 
+    // Build formatted string: (XXX) XXX-XXXX
     let formatted = ''
     if (limitedDigits.length > 0) {
       formatted = '(' + limitedDigits.slice(0, 3)
@@ -39,21 +41,24 @@ export default function QuoteForm() {
     setPhone(formatted)
   }
 
+  // Handler: Form submission - send quote request to API
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault()  // Prevent page reload
     setIsSubmitting(true)
     setError("")
 
+    // Collect all form field values
     const formData = new FormData(e.currentTarget)
     const dynamicFields: Record<string, string> = {}
 
-    // Separate dynamic insurance fields from basic fields
+    // Separate insurance-specific fields from basic contact fields
     formData.forEach((value, key) => {
       if (!['firstName', 'lastName', 'email', 'phone', 'insuranceType', 'businessName', 'message'].includes(key)) {
-        dynamicFields[key] = value.toString()
+        dynamicFields[key] = value.toString()  // e.g., "Annual Sales", "Has Pool"
       }
     })
 
+    // Build data object to send to API
     const data = {
       firstName: formData.get('firstName'),
       lastName: formData.get('lastName'),
@@ -62,10 +67,11 @@ export default function QuoteForm() {
       insuranceType: formData.get('insuranceType'),
       businessName: formData.get('businessName'),
       message: formData.get('message'),
-      dynamicFields
+      dynamicFields  // All the insurance-type-specific fields
     }
 
     try {
+      // Send POST request to /api/quote
       const response = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -73,17 +79,18 @@ export default function QuoteForm() {
       })
 
       if (response.ok) {
-        setIsSuccess(true)
+        setIsSuccess(true)  // Show success message
       } else {
         setError('Something went wrong. Please try again.')
       }
     } catch {
       setError('Something went wrong. Please try again.')
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false)  // Hide loading spinner
     }
   }
 
+  // Handler: Reset form to initial state for another quote request
   const resetForm = () => {
     setIsSuccess(false)
     setInsuranceType("")
@@ -91,12 +98,15 @@ export default function QuoteForm() {
     setError("")
   }
 
+  // If form submitted successfully, show success message instead of form
   if (isSuccess) {
     return <SuccessMessage onReset={resetForm} />
   }
 
+  // Render: The actual form UI
   return (
     <>
+      {/* Form header */}
       <div className="mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-2">
           Request a Quote
@@ -107,6 +117,7 @@ export default function QuoteForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Basic contact info fields: Name, Email, Phone, Insurance Type dropdown */}
         <BasicInfoFields
           phone={phone}
           insuranceType={insuranceType}
@@ -115,11 +126,12 @@ export default function QuoteForm() {
           onNameInput={handleNameInput}
         />
 
+        {/* Show insurance-specific fields only if type is selected and not "Other" */}
         {insuranceType && insuranceType !== "Other" && (
           <DynamicFieldsSection insuranceType={insuranceType} />
         )}
 
-        {/* Business Name */}
+        {/* Business Name (optional field) */}
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Business Name <span className="text-slate-400 font-normal">(if applicable)</span>
@@ -132,7 +144,7 @@ export default function QuoteForm() {
           />
         </div>
 
-        {/* Message */}
+        {/* Additional message/notes field */}
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Additional Information
@@ -145,10 +157,12 @@ export default function QuoteForm() {
           ></textarea>
         </div>
 
+        {/* Show error message if submission failed */}
         {error && (
           <p className="text-red-600 text-sm">{error}</p>
         )}
 
+        {/* Submit button - shows loading spinner when submitting */}
         <Button
           type="submit"
           disabled={isSubmitting}
@@ -167,6 +181,7 @@ export default function QuoteForm() {
           )}
         </Button>
 
+        {/* Reassurance text */}
         <p className="text-center text-sm text-slate-500">
           No spam, no obligation. We typically respond within 24 hours.
         </p>
