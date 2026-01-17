@@ -1,20 +1,30 @@
+// Import the list of insurance types from our config file
 import { insuranceTypeNames } from '@/lib/quote/insurance-config'
 
+// TYPESCRIPT INTERFACE: This is like a contract that defines what props this component expects
+// Think of it as a checklist - the parent component must provide all these items
 interface BasicInfoFieldsProps {
-  phone: string
-  insuranceType: string
-  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
-  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+  phone: string  // ← "string" means this is text (like "555-1234")
+  insuranceType: string  // ← Another text value (like "Gas Station")
+
+  // These are FUNCTIONS that get called when the user types/changes something
+  // (e: React.ChangeEvent<HTMLInputElement>) means: "a function that receives a change event from an input field"
+  // => void means: "this function doesn't return anything, it just does something"
+  onPhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function to handle phone input
+  onInsuranceTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void  // Function to handle dropdown change
+  onNameInput: (e: React.ChangeEvent<HTMLInputElement>) => void  // Function to handle name input
 }
 
+// This component receives props from its parent (QuoteForm)
+// The curly braces { } "unpack" the props object so we can use them directly
+// ": BasicInfoFieldsProps" tells TypeScript to check that we're getting the right props
 export default function BasicInfoFields({
-  phone,
-  insuranceType,
-  onPhoneChange,
-  onInsuranceTypeChange,
-  onNameInput
-}: BasicInfoFieldsProps) {
+  phone,              // Unpacking: phone value from parent
+  insuranceType,      // Unpacking: selected insurance type
+  onPhoneChange,      // Unpacking: function to call when phone changes
+  onInsuranceTypeChange,  // Unpacking: function to call when dropdown changes
+  onNameInput         // Unpacking: function to call when name changes
+}: BasicInfoFieldsProps) {  // ← This says "make sure props match the interface above"
   return (
     <>
       {/* Name Fields */}
