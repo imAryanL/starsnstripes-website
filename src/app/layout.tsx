@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // Metadata defines hidden information for search engines and browsers like tab title, page description and link preview images
 import { Poppins } from "next/font/google";
+import Script from "next/script"; // Next.js component for loading external scripts efficiently
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
@@ -28,6 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* Google Analytics - tracks visitor count, page views, etc. for free */}
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-QJDSSFXB19" strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QJDSSFXB19');
+        `}
+      </Script>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Navbar />
         {/* All pages will be in 'children' don't label any pages content  */}
