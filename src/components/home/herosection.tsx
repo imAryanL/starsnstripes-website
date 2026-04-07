@@ -20,7 +20,7 @@ export default function HeroSection() {
                     {/* Left Side - Text Content */}
                     <div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight" style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)' }}>
-                            Protecting Businesses and Families Nationwide
+                            Protecting Businesses and Families Across 6 States
                         </h1>
                         
                         <p className="text-xl mb-8 max-w-2xl leading-relaxed" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.6)' }}>

@@ -35,7 +35,7 @@ export default function Testimonials() {
                         What Our Clients Say
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Join the hundreds of business owners nationwide who trust Stars & Stripes for their protection.
+                        Join the hundreds of business owners across FL, TX, SC, OK, CO, and GA who trust Stars & Stripes for their protection.
                     </p>
                 </div>
 

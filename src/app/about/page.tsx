@@ -21,7 +21,7 @@ const values = [
     {
         icon: MapPin,
         title: "Local Expertise",
-        description: "With nationwide expertise, we understand regional insurance needs across America.",
+        description: "With multi-state expertise, we understand regional insurance needs across FL, TX, SC, OK, CO, and GA.",
         color: "text-blue-600",
         bgColor: "bg-blue-50"
     },
@@ -44,7 +44,7 @@ export default function AboutPage() {
                         About Stars & Stripes Insurance
                     </h1>
                     <p className="text-xl text-blue-200 max-w-2xl mx-auto">
-                        Protecting businesses and families nationwide for over 20 years.
+                        Protecting businesses and families across Florida, Texas, South Carolina, Oklahoma, Colorado, and Georgia for over 20 years.
                     </p>
                 </div>
             </section>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                             </blockquote>
                             
                             <p className="text-slate-600 leading-relaxed mb-4">
-                                With over 20 years of experience in the insurance industry, Amir founded Stars & Stripes Insurance to provide businesses and families nationwide with the personalized service they deserve.
+                                With over 20 years of experience in the insurance industry, Amir founded Stars & Stripes Insurance to provide businesses and families across Florida, Texas, South Carolina, Oklahoma, Colorado, and Georgia with the personalized service they deserve.
                             </p>
                             <p className="text-slate-600 leading-relaxed mb-4">
                                 He specializes in commercial insurance for gas stations, restaurants, hotels, and more. Unlike big corporations, Amir works directly with every client to understand their unique needs and find the right coverage at the best price.
